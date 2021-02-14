@@ -8,7 +8,7 @@ namespace GraphQlDemo.Repository
 {
     public class BookRepository
     {
-        private readonly List<Book> Books = new(){
+        private static List<Book> Books = new(){
             new Book ("a", "b"),
             new Book ("asda", "b2"),
             new Book ("ab23", "b23"),
@@ -25,6 +25,13 @@ namespace GraphQlDemo.Repository
         public Book GetBook(string id)
         {
             return Books.Where(x => x.Id == id).FirstOrDefault();
+        }
+
+        public Book CreateBook(string id, string title)
+        {
+            var book = new Book(id, title);
+            Books.Add(book);
+            return book;
         }
     }
 }

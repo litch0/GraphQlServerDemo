@@ -11,7 +11,9 @@ namespace GraphQlDemo.Queries
 {
     public class Query
     {
-        public async Task<List<Book>> GetBook([Service]IHttpContextAccessor httpContext, [Service] BookRepository repo) 
+
+        // Can be an async task of list of books
+        public List<Book> AllBooks([Service]IHttpContextAccessor httpContext, [Service] BookRepository repo) 
         {
             // we can access the request like this to for example, authenticate the user
             if(httpContext.HttpContext?.Request.Method == "POST")
@@ -26,7 +28,7 @@ namespace GraphQlDemo.Queries
             return repo.GetBooks();
         }
 
-        public async Task<Book> GetBookById(string id, [Service] BookRepository repo)
+        public Book OneBookById(string id, [Service] BookRepository repo)
         {
             return repo.GetBook(id);
         }

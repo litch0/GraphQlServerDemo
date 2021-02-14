@@ -27,10 +27,9 @@ namespace GraphQlDemo
             services.AddSingleton<BookRepository>();
             services
                 .AddGraphQLServer()
-                .AddType<Book>()
-                .AddType<Author>()
+                //.AddType<Book>()
                 .AddQueryType<Query>()
-                .AddMutationType<Mutation>();
+                .AddMutationType<Mutations>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,7 +40,7 @@ namespace GraphQlDemo
             // goto https://localhost:5001/ui/altair
             app.UseGraphQLAltair();
             
-            app.UseGraphQL();
+            //app.UseGraphQL();
             
             app
                 .UseRouting()
